@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<div ng-cloak class="snap-drawers">
+  <!--.ng-scope.snap-drawer.snap-drawer-right(snap-drawer='right' name='rd' ng-controller='MenuCtrl')-->
+  <div snap-drawer="left" name="rd" ng-controller="MenuCtrl" class="ng-scope snap-drawer snap-drawer-left">
+    <div class="row header-nav-menu-container has-ico-label">
+      <div class="col-xs-2"><span hm-touch="showuser=true" hm-release="showuser=false" class="ico-label-cont header-nav-menu-container__ico-label pointer-hand">{{user.commercialType}}</span></div>
+      <div class="col-xs-8">
+        <ul class="list-unstyled pseudo-mask header-nav-menu__user">
+          <li class="slide">{{user.comercialName}}</li>
+          <li ng-class="{'header-nav-menu__show-user-type':showuser}" class="slide transition-500">
+            <ul class="list-unstyled">
+              <li>{{user.name}}</li>
+              <li>{{user.territoryCode}}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="col-xs-2 header-nav-menu__logout-btn-cont">
+        <div ng-click="logout()" class="header-nav-menu__logout-btn icosrch icon-logout-2-ico pointer-hand"></div>
+      </div>
+    </div>
+    <div class="nav-menu-body">
+      <div tree menu="menu"></div>
+    </div>
+  </div>
+</div>
+<!--FIN MENU-->
+<snap-content>
+  <div id="main-content">
+    <div class="container-fluid">
+      <div header-menu></div>
+      <!-- END HEADER    -->
+      <div ng-show="(errors.length  &gt; 0 &amp;&amp; !showError)" class="alert alert-danger alert-dismissable">
+        <button type="button" data-dismiss="alert" aria-hidden="true" ng-click="showError = !showError" class="close">&times;</button>
+        <ul>
+          <li ng-repeat="error in errors">{{error.msg}}:{{error.text}}</li>
+        </ul>
+      </div>
+      <!--FIN ALERTA-->
+      <div ui-view></div>
+    </div>
+  </div>
+</snap-content>
+<!--FIN CONTENIDO PRINCIPAL-->
